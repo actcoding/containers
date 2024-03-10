@@ -12,7 +12,7 @@ permissions:
   packages: write
 
 jobs:
-  build:
+  keycloak:
     uses: ./.github/workflows/docker.yml
     with:
       dockerfile: keycloak/Dockerfile
