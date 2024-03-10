@@ -1,9 +1,9 @@
 ARG KEYCLOAK_VERSION=23.0.7
 
-# FROM alpine:3 as theme
+FROM alpine:3 as theme
 
-# RUN apk add --no-cache git && \
-#     git clone --branch act -- https://github.com/actcoding/keywind.git /keywind
+RUN apk add --no-cache git && \
+    git clone --branch act -- https://github.com/actcoding/keywind.git /keywind
 
 
 FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
