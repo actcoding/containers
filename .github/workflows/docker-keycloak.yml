@@ -21,3 +21,5 @@ jobs:
       tag: keycloak:${{ vars.KEYCLOAK_VERSION }}
       args: |
         KEYCLOAK_VERSION=${{ vars.KEYCLOAK_VERSION }}
+      labels: |
+        org.opencontainers.image.description=act-coding themed Keycloak image

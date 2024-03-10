@@ -18,6 +18,9 @@ on:
         type: string
         description: The image tag
         required: true
+      labels:
+        type: string
+        description: Additional image labels.
 
 env:
   REGISTRY: ghcr.io
@@ -52,6 +55,7 @@ jobs:
         with:
           labels: |
             org.opencontainers.image.vendor="act coding GbR"
+            ${{ inputs.labels }}
 
       - name: Build and push
         uses: docker/build-push-action@v5
