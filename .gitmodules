@@ -1,0 +1,4 @@
+[submodule "keycloak/keywind"]
+	path = keycloak/keywind
+	url = https://github.com/actcoding/keywind
+	branch = act
