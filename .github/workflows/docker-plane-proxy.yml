@@ -1,0 +1,21 @@
+name: Build Plane Proxy Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - plane-proxy/**/*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  keycloak:
+    uses: ./.github/workflows/docker.yml
+    with:
+      dockerfile: plane-proxy/Dockerfile
+      context: plane-proxy
+      tag: plane-proxy:stable
