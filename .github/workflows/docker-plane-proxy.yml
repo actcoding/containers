@@ -13,7 +13,7 @@ permissions:
   packages: write
 
 jobs:
-  keycloak:
+  plane-proxy:
     uses: ./.github/workflows/docker.yml
     with:
       dockerfile: plane-proxy/Dockerfile
