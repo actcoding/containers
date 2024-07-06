@@ -18,4 +18,6 @@ jobs:
     with:
       dockerfile: plane-proxy/Dockerfile
       context: plane-proxy
-      tag: plane-proxy:stable
+      tag: plane-proxy:v${{ vars.PLANE_VERSION }}-dev
+      args: |
+        PLANE_VERSION=${{ vars.PLANE_VERSION }}
