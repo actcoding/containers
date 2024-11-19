@@ -1,4 +1,4 @@
-ARG KEYCLOAK_VERSION=23.0.7
+ARG KEYCLOAK_VERSION=26.0.5
 
 FROM alpine:3 as theme
 
@@ -10,7 +10,7 @@ FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-ENV KC_FEATURES=token-exchange,recovery-codes
+ENV KC_FEATURES=token-exchange,recovery-codes,web-authn,passkeys
 ENV KC_DB=postgres
 
 RUN /opt/keycloak/bin/kc.sh build
