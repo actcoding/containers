@@ -13,10 +13,10 @@ permissions:
   packages: write
 
 jobs:
-  keycloak:
+  janus:
     uses: ./.github/workflows/docker.yml
     with:
-      dockerfile: spreed/Dockerfile
+      dockerfile: spreed/janus.Dockerfile
       context: spreed
       tag: spreed:janus-${{ vars.SPREED_JANUS_VERSION }}
       args: |
