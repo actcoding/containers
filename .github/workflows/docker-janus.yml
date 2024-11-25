@@ -1,0 +1,25 @@
+name: Build Janus Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - spreed/**/*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  keycloak:
+    uses: ./.github/workflows/docker.yml
+    with:
+      dockerfile: spreed/Dockerfile
+      context: spreed
+      tag: spreed:janus-${{ vars.SPREED_JANUS_VERSION }}
+      args: |
+        JANUS_VERSION=${{ vars.SPREED_JANUS_VERSION }}
+      labels: |
+        org.opencontainers.image.description=meetecho/janus WebRTC server
