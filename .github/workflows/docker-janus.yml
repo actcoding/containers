@@ -23,3 +23,4 @@ jobs:
         JANUS_VERSION=${{ vars.SPREED_JANUS_VERSION }}
       labels: |
         org.opencontainers.image.description=meetecho/janus WebRTC server
+      platforms: linux/amd64,linux/arm64
