@@ -11,6 +11,7 @@ FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV KC_FEATURES=token-exchange,recovery-codes,web-authn,passkeys
+ENV KC_FEATURES_DISABLED=ciba,par,kerberos,organization
 ENV KC_DB=postgres
 
 RUN /opt/keycloak/bin/kc.sh build
