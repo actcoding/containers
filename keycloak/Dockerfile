@@ -1,12 +1,12 @@
 ARG KEYCLOAK_VERSION=26.0.5
 
-FROM alpine:3 as theme
+FROM alpine:3 AS theme
 
 RUN apk add --no-cache git && \
     git clone --branch act -- https://github.com/actcoding/keywind.git /keywind
 
 
-FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
+FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} AS builder
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
