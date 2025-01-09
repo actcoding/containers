@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - spreed/**/*
+      - nextcloud/janus/**/*
   workflow_dispatch:
 
 permissions:

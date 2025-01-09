@@ -1,0 +1,26 @@
+name: Build Nextcloud Push Server Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - nextcloud/push-server/**/*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  push-server:
+    uses: ./.github/workflows/docker.yml
+    with:
+      dockerfile: spreed/push.Dockerfile
+      context: spreed
+      tag: spreed:push-${{ vars.SPREED_PUSH_VERSION }}
+      args: |
+        JANUS_VERSION=${{ vars.SPREED_PUSH_VERSION }}
+      labels: |
+        org.opencontainers.image.description=Update notifications for nextcloud clients
+      platforms: linux/amd64,linux/arm64
