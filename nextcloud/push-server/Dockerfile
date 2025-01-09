@@ -1,6 +1,6 @@
-ARG PUSH_VERSION=0.7.0
-
 FROM rust:1-alpine AS build
+
+ARG PUSH_VERSION=0.7.0
 
 ADD https://github.com/nextcloud/notify_push#v${PUSH_VERSION} /usr/local/src
 
