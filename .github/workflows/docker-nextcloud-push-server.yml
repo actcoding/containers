@@ -16,7 +16,7 @@ jobs:
   push-server:
     uses: ./.github/workflows/docker.yml
     with:
-      dockerfile: spreed/push.Dockerfile
+      dockerfile: nextcloud/push-server/Dockerfile
       context: spreed
       tag: spreed:push-${{ vars.SPREED_PUSH_VERSION }}
       args: |
