@@ -15,6 +15,6 @@ RUN apk add --no-cache \
 
 FROM alpine:3
 
-COPY --from=build /usr/local/src/result/bin/notify_push /usr/local/bin/notify_push
+COPY --from=build /usr/local/src/target/release/notify_push /usr/local/bin/notify_push
 
 CMD [ "/usr/local/bin/notify_push", "--no-ansi", "--port", "1337", "--bind", "0.0.0.0" ]
