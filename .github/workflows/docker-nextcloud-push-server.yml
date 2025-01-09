@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/docker.yml
     with:
       dockerfile: nextcloud/push-server/Dockerfile
-      context: spreed
+      context: nextcloud/push-server
       tag: spreed:push-${{ vars.SPREED_PUSH_VERSION }}
       args: |
         JANUS_VERSION=${{ vars.SPREED_PUSH_VERSION }}
