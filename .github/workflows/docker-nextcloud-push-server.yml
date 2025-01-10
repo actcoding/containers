@@ -14,13 +14,21 @@ permissions:
 
 jobs:
   push-server:
+    strategy:
+      matrix:
+        platform:
+          - docker: amd64
+            push: x86_64
+          - docker: arm64
+            push: aarch64
     uses: ./.github/workflows/docker.yml
     with:
       dockerfile: nextcloud/push-server/Dockerfile
       context: nextcloud/push-server
       tag: spreed:push-${{ vars.SPREED_PUSH_VERSION }}
       args: |
-        JANUS_VERSION=${{ vars.SPREED_PUSH_VERSION }}
+        PLATFORM=${{ matrix.platform.push }}
+        PUSH_VERSION=${{ vars.SPREED_PUSH_VERSION }}
       labels: |
         org.opencontainers.image.description=Update notifications for nextcloud clients
-      platforms: linux/amd64,linux/arm64
+      platforms: linux/${{ matrix.platform.docker }}
