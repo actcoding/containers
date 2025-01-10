@@ -18,7 +18,7 @@ jobs:
     with:
       dockerfile: nextcloud/janus/Dockerfile
       context: nextcloud/janus
-      tag: spreed:janus-${{ vars.SPREED_JANUS_VERSION }}
+      tag: nextcloud-janus:${{ vars.SPREED_JANUS_VERSION }}
       args: |
         JANUS_VERSION=${{ vars.SPREED_JANUS_VERSION }}
       labels: |

@@ -25,7 +25,7 @@ jobs:
     with:
       dockerfile: nextcloud/push-server/Dockerfile
       context: nextcloud/push-server
-      tag: spreed:push-${{ vars.SPREED_PUSH_VERSION }}
+      tag: nextcloud-push-server:${{ vars.SPREED_PUSH_VERSION }}
       args: |
         PLATFORM=${{ matrix.platform.push }}
         PUSH_VERSION=${{ vars.SPREED_PUSH_VERSION }}
