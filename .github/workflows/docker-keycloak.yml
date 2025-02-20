@@ -21,5 +21,6 @@ jobs:
       tag: keycloak:${{ vars.KEYCLOAK_VERSION }}
       args: |
         KEYCLOAK_VERSION=${{ vars.KEYCLOAK_VERSION }}
+        GITHUB_TOKEN=${{ secrets.GH_PAT_KEYCLOAK_THEME }}
       labels: |
         org.opencontainers.image.description=act-coding themed Keycloak image
