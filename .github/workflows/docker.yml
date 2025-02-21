@@ -14,9 +14,6 @@ on:
       args:
         type: string
         description: A list of build args.
-      secrets:
-        type: string
-        description: List of secrets to expose to the build (e.g., key=string, GIT_AUTH_TOKEN=mytoken)
       tag:
         type: string
         description: The image tag
@@ -28,6 +25,9 @@ on:
         type: string
         description: Platforms to build for
         default: linux/amd64
+    secrets:
+      DOCKER_BUILD_SECRETS:
+        required: false
 
 env:
   REGISTRY: ghcr.io
@@ -74,8 +74,8 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ inputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: ${{ inputs.args }}
-          secrets: ${{ inputs.secrets }}
+          secrets: ${{ secrets.DOCKER_BUILD_SECRETS }}
           platforms: ${{ inputs.platforms }}
-          push: false
+          push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max

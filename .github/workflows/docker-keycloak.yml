@@ -13,25 +13,15 @@ permissions:
   packages: write
 
 jobs:
-  export-secret:
-    runs-on: ubuntu-latest
-    outputs:
-      gh_pat: "${{ steps.secret.outputs.gh_pat }}"
-    steps:
-      - id: secret
-        run: echo "gh_pat=${{ secrets.GH_PAT_KEYCLOAK_THEME }}" >> "$GITHUB_OUTPUT"
-
   keycloak:
     uses: ./.github/workflows/docker.yml
-    needs:
-      - export-secret
+    secrets:
+      DOCKER_BUILD_SECRETS: ${{ secrets.GH_PAT_KEYCLOAK_THEME }}
     with:
       dockerfile: keycloak/Dockerfile
       context: keycloak
       tag: keycloak:${{ vars.KEYCLOAK_VERSION }}
       args: |
         KEYCLOAK_VERSION=${{ vars.KEYCLOAK_VERSION }}
-      secrets: |
-        GH_PAT=${{ needs.export-secret.outputs.gh_pat }}
       labels: |
         org.opencontainers.image.description=act-coding themed Keycloak image
