@@ -16,7 +16,8 @@ jobs:
   keycloak:
     uses: ./.github/workflows/docker.yml
     secrets:
-      DOCKER_BUILD_SECRETS: ${{ secrets.GH_PAT_KEYCLOAK_THEME }}
+      DOCKER_BUILD_SECRETS: |
+        gh_pat=${{ secrets.GH_PAT_KEYCLOAK_THEME }}
     with:
       dockerfile: keycloak/Dockerfile
       context: keycloak
