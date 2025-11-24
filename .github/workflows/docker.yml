@@ -56,7 +56,7 @@ jobs:
           password: ${{ github.token }}
 
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
